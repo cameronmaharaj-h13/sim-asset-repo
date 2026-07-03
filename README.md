@@ -1,4 +1,4 @@
-# Cyber Forge Sim Asset Repository
+# Sim Asset Repository
 
 Free-to-use, license-cleared background and icon assets for Cyber Forge
 HTML/JS/CSS simulations — plus a machine-readable manifest so AI coding
