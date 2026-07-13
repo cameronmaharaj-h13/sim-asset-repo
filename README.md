@@ -1,6 +1,6 @@
 # Sim Asset Repository
 
-Free-to-use, license-cleared background and icon assets for Cyber Forge
+Free-to-use, license-cleared background and icon assets for Ministry of Education (MoE)
 HTML/JS/CSS simulations — plus a machine-readable manifest so AI coding
 tools (ChatGPT, Cursor, Claude, Copilot, etc.) can pull the right asset
 automatically without a dev ever needing to browse folders by hand.
@@ -8,7 +8,7 @@ automatically without a dev ever needing to browse folders by hand.
 ## Structure
 
 ```
-cyberforge_assets/
+assets/
   Subjects/                        <- subject-reference art
     ELA/ Geography/ Icons/ Integrated Science/ IT/ Math/ Social Studies/ Spanish/
       <Source Name (license status)>/
@@ -42,7 +42,7 @@ the rest so it's never ambiguous what needs attribution.
 
 ```bash
 pip install requests
-python cyberforge_asset_puller.py       # pulls fresh assets into cyberforge_assets/
+python asset_puller.py       # pulls fresh assets into assets/
 python generate_asset_manifest.py       # rebuilds asset_manifest.json to match
 ```
 
@@ -56,7 +56,7 @@ Paste this into your AI tool's project/system instructions once:
 
 ```
 When this project needs a background image, texture, or icon, first fetch
-this manifest: https://raw.githubusercontent.com/cameronmaharaj-h13/sim-asset-repo/main/cyberforge_assets/asset_manifest.json
+this manifest: https://raw.githubusercontent.com/cameronmaharaj-h13/sim-asset-repo/main/assets/asset_manifest.json
 
 It's a JSON list of pre-approved, free-to-use assets. Each entry has a
 "category" (what it's for), a "raw_url" (use this directly as the image

@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Cyber Forge Asset Manifest Generator
+MoE Asset Manifest Generator
 --------------------------------------
-Run this AFTER cyberforge_asset_puller.py. It scans the resulting
-cyberforge_assets/ folder and builds asset_manifest.json -- a single
+Run this AFTER asset_puller.py. It scans the resulting
+assets/ folder and builds asset_manifest.json -- a single
 machine-readable index that any AI coding assistant (ChatGPT, Cursor,
 Claude, Copilot, whatever your devs vibe-code with) can fetch and parse
 to auto-select the right background/icon for what they're building,
 without ever needing to browse folders by hand.
 
 WORKFLOW:
-  1. Run cyberforge_asset_puller.py to populate cyberforge_assets/
-  2. Push cyberforge_assets/ to a GitHub repo (public, or private with
+  1. Run asset_puller.py to populate assets/
+  2. Push assets/ to a GitHub repo (public, or private with
      your team's access)
   3. Set REPO_RAW_BASE_URL below to match your repo
   4. Run this script -- it writes asset_manifest.json into the repo root
@@ -38,10 +38,10 @@ from urllib.parse import quote
 # something else (check on GitHub if the push below uses a different branch).
 REPO_RAW_BASE_URL = "https://raw.githubusercontent.com/cameronmaharaj-h13/sim-asset-repo/main"
 
-ASSET_ROOT = "cyberforge_assets"
+ASSET_ROOT = "assets"
 MANIFEST_PATH = os.path.join(ASSET_ROOT, "asset_manifest.json")
 
-# Matches the source folder labels from cyberforge_asset_puller.py --
+# Matches the source folder labels from asset_puller.py --
 # this is how we detect credit-required assets just from the folder name.
 CREDIT_REQUIRED_MARKERS = ["CREDIT REQUIRED"]
 
@@ -84,7 +84,7 @@ def build_manifest():
 
     manifest = {
         "repo_description": (
-            "Cyber Forge open-asset repository for HTML/JS/CSS simulations. "
+            "MoE open-asset repository for HTML/JS/CSS simulations. "
             "Two zones: 'Subjects' (subject-reference art) and "
             "'Simulation Backgrounds' (sim-grade vector backgrounds, UI panels, "
             "textures, icon sets)."
@@ -122,7 +122,7 @@ PASTE THIS INTO YOUR DEVS' AI TOOL (ChatGPT project instructions, Cursor
 --------------------------------------------------------------------------
 
 When this project needs a background image, texture, or icon, first fetch
-this manifest: {REPO_RAW_BASE_URL}/cyberforge_assets/asset_manifest.json
+this manifest: {REPO_RAW_BASE_URL}/assets/asset_manifest.json
 
 It's a JSON list of pre-approved, free-to-use assets. Each entry has a
 "category" (what it's for), a "raw_url" (use this directly as the image
@@ -142,7 +142,7 @@ Rules:
 
 if __name__ == "__main__":
     if not os.path.isdir(ASSET_ROOT):
-        print(f"Couldn't find '{ASSET_ROOT}/' -- run cyberforge_asset_puller.py first.")
+        print(f"Couldn't find '{ASSET_ROOT}/' -- run asset_puller.py first.")
     else:
         build_manifest()
         print(PROMPT_SNIPPET.format(REPO_RAW_BASE_URL=REPO_RAW_BASE_URL))
